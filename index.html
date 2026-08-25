@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Ramkanta Pramanik — Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js. 70+ REST endpoints, Razorpay payment integration, AWS infrastructure."
+    />
+    <meta name="author" content="Ramkanta Pramanik" />
+    <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#100f0d" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ramkanta Pramanik — Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js."
+    />
+    <meta property="og:image" content="/og.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Apply the stored theme before first paint, so there is no flash. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var dark = stored
+            ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        } catch (e) {}
+      })()
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ramkanta Pramanik",
+        "jobTitle": "Full Stack Developer",
+        "email": "ramkantapramanik9679@gmail.com",
+        "telephone": "+919679697440",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kalyani",
+          "addressRegion": "West Bengal",
+          "addressCountry": "IN"
+        },
+        "worksFor": { "@type": "Organization", "name": "InfluxIQ Tech" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "JIS College of Engineering" },
+        "sameAs": [
+          "https://www.linkedin.com/in/ramkanta-pramanik-96123a1ba/",
+          "https://github.com/ramkanta"
+        ],
+        "knowsAbout": [
+          "TypeScript", "React", "Next.js", "NestJS", "Node.js",
+          "AWS", "PostgreSQL", "MongoDB", "Docker", "Razorpay"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

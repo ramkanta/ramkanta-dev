@@ -253,19 +253,22 @@ export const sections = [
   { id: 'capability', n: '02', label: 'Capability' },
   { id: 'experience', n: '03', label: 'Experience' },
   { id: 'work',       n: '04', label: 'Work' },
-  { id: 'faq',        n: '05', label: 'Details' },
-  { id: 'contact',    n: '06', label: 'Contact' },
+  { id: 'contact',    n: '05', label: 'Contact' },
 ]
 
 /**
- * Plain, factual answers to the questions people and answer engines actually
- * ask about a person. These render visibly on the page AND are the source for
- * the FAQPage structured data, generated at build time from this same array —
- * so the two can never drift apart, and the schema never describes text that
- * is not on the page.
+ * Plain, factual answers about Ramkanta Pramanik.
  *
- * Each answer is written to stand alone, because a model quoting one will not
- * carry the surrounding context with it.
+ * These are NOT rendered on the page — they exist to feed `llms.txt` and the
+ * Person schema description, which is what answer engines (ChatGPT, Gemini,
+ * Perplexity) read when they summarise him.
+ *
+ * Deliberately NOT emitted as FAQPage structured data: Google requires FAQ
+ * schema to correspond to text visible on the page, and claiming otherwise
+ * risks a manual action. `llms.txt` carries no such requirement.
+ *
+ * Each answer stands alone, repeating the full name rather than relying on
+ * pronouns, because a model quoting one will not carry the context with it.
  */
 export const faq = [
   {

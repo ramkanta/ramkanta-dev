@@ -32,14 +32,17 @@ import SheetHead from './SheetHead.vue'
         </h2>
         <div class="intro__body">
           <p class="section-lede" v-reveal="80">
-            Healthcare records on one platform, live payments on another. Both are domains where
-            a quiet bug is worse than a loud one — so validation, access control and reconciliation
-            are where I spend my attention, not where I clean up afterwards.
+            I am Ramkanta Pramanik, a full stack developer based in Kalyani, West Bengal, and a
+            Software Developer at InfluxIQ Tech since June 2025. Healthcare records on one platform,
+            live payments on another. Both are domains where a quiet bug is worse than a loud one —
+            so validation, access control and reconciliation are where I spend my attention, not
+            where I clean up afterwards.
           </p>
           <p class="section-lede" v-reveal="140">
-            The four ideas below held on every system I have shipped. Each one names the artefact it
-            actually produces, because a principle you cannot point at in the repository is just a
-            preference.
+            I work across the whole stack — React and Next.js interfaces, the NestJS and Node.js
+            APIs behind them, and the Docker and GitHub Actions pipelines that ship them. The four
+            ideas below held on every system I have shipped, and each names the artefact it actually
+            produces, because a principle you cannot point at in the repository is just a preference.
           </p>
         </div>
         </div>

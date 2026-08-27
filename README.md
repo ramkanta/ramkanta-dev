@@ -112,17 +112,25 @@ Scroll-reveal styles are gated on `html.js` (set by an inline script in
 `index.html`). Without that gate, a reader or crawler with no JavaScript would
 get a blank page, because nothing would ever add `is-visible`.
 
+### The FAQ data is intentionally not on the page
+
+`faq` in `content.js` feeds `llms.txt` and the `Person.description` only. It is
+**not** rendered, and **not** emitted as `FAQPage` structured data.
+
+That pairing is deliberate. Google requires FAQ structured data to correspond to
+text visible on the page, so shipping the schema without the section would be a
+guidelines violation and risks a manual action. `llms.txt` carries no such
+requirement, which is why the answers still live there. If a visible FAQ section
+is ever added back, the `FAQPage` node can return with it — not before.
+
 ### Structured data is generated, not hand-written
 
 `src/data/seo.js` builds the schema.org `@graph` (Person, WebSite, ProfilePage,
-FAQPage, CreativeWork) and `llms.txt` from `src/data/content.js`, and
-`scripts/prerender.js` injects them at build time. That is deliberate: Google
-requires FAQ structured data to match visible page text, and an answer engine
-quoting a stale schema is worse than one quoting nothing. Because both come from
-the same array, they cannot disagree — edit `faq` in `content.js` and the page,
-the schema and `llms.txt` all follow.
+CreativeWork) and `llms.txt` from `src/data/content.js`, and
+`scripts/prerender.js` injects them at build time. Editing `content.js` updates
+the page, the schema and `llms.txt` together, so they cannot disagree.
 
-FAQ answers are written to **stand alone**, repeating the full name rather than
+Answers are written to **stand alone**, repeating the full name rather than
 relying on pronouns, because a model quoting one will not carry the surrounding
 context with it.
 
@@ -138,6 +146,9 @@ context with it.
 - `sitemap.xml`
 - `docs/github-profile-README.md` — generated from the same content, to paste
   into a `ramkanta/ramkanta` profile repo
+- IndexNow: `public/<key>.txt` holds the key; `npm run indexnow` submits the
+  site to Bing and Yandex in seconds. Run it after a deploy that changes
+  content. The key file must be live before the submission validates.
 
 If the domain ever changes, update `SITE_URL` in `src/data/seo.js` and the
 absolute URLs in `index.html`, `public/robots.txt` and `public/sitemap.xml`.

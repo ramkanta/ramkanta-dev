@@ -16,7 +16,7 @@ const year = new Date().getFullYear()
 <template>
   <section id="contact" class="section section--contact">
     <div class="shell">
-      <SheetHead n="06" label="Contact" :count="profile.available" />
+      <SheetHead n="05" label="Contact" :count="profile.available" />
 
       <h2 class="cta-title" v-reveal>
         Have something that needs<br />

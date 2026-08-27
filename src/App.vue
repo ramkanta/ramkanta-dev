@@ -10,7 +10,6 @@ import ApproachSection from './components/ApproachSection.vue'
 import CapabilitySection from './components/CapabilitySection.vue'
 import ExperienceSection from './components/ExperienceSection.vue'
 import WorkSection from './components/WorkSection.vue'
-import FaqSection from './components/FaqSection.vue'
 import ContactSection from './components/ContactSection.vue'
 
 const active = useActiveSection(sections.map((s) => s.id))
@@ -72,7 +71,6 @@ const toggleTheme = () => {
     <CapabilitySection />
     <ExperienceSection />
     <WorkSection />
-    <FaqSection />
     <ContactSection />
   </main>
 </template>

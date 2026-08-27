@@ -43,7 +43,9 @@ export function buildJsonLd() {
       caption: `${profile.name} — ${profile.role}`,
     },
     jobTitle: profile.role,
-    description: faq[0].a,
+    // Three of the standalone answers, which together state who he is, what
+    // he builds and what he works with — the summary an answer engine quotes.
+    description: [faq[0].a, faq[5].a, faq[3].a].join(' '),
     email: `mailto:${profile.email}`,
     telephone: `+91${profile.phoneHref.replace(/^\+91/, '')}`,
     address: {
@@ -97,19 +99,9 @@ export function buildJsonLd() {
     isPartOf: { '@id': siteId },
     about: { '@id': personId },
     mainEntity: { '@id': personId },
-    primaryImageOfPage: abs('/og.png'),
+    primaryImageOfPage: abs('/ramkanta-pramanik.jpg'),
     inLanguage: 'en',
-  }
-
-  const faqPage = {
-    '@type': 'FAQPage',
-    '@id': `${SITE_URL}/#faq`,
-    isPartOf: { '@id': pageId },
-    mainEntity: faq.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
+    dateModified: new Date().toISOString().slice(0, 10),
   }
 
   const work = {
@@ -121,7 +113,7 @@ export function buildJsonLd() {
     keywords: project.stack.join(', '),
   }
 
-  return { '@context': 'https://schema.org', '@graph': [person, website, page, faqPage, work] }
+  return { '@context': 'https://schema.org', '@graph': [person, website, page, work] }
 }
 
 /** A compact, plain-text profile for answer engines that read llms.txt. */

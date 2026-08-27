@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build && vite build --ssr src/entry-server.js --outDir dist-ssr && node scripts/prerender.js",
     "preview": "vite preview",
-    "build:client": "vite build"
+    "build:client": "vite build",
+    "indexnow": "curl -sS \"https://api.indexnow.org/indexnow?url=https%3A%2F%2Framkanta.in%2F&key=4cb0c374618e7f3a879e822e809e18be&keyLocation=https%3A%2F%2Framkanta.in%2F4cb0c374618e7f3a879e822e809e18be.txt\" -o /dev/null -w \"IndexNow submitted: HTTP %{http_code}\\n\""
   },
   "dependencies": {
     "three": "^0.185.1",

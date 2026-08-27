@@ -9,6 +9,24 @@ import SheetHead from './SheetHead.vue'
       <SheetHead n="01" label="Approach" :count="`${principles.length} principles`" />
 
       <div class="intro">
+        <!-- Portrait plate. Descriptive filename and alt text, sitting next to
+             the text that describes him — which is what image search reads. -->
+        <figure class="portrait" v-reveal>
+          <img
+            src="/ramkanta-pramanik.jpg"
+            width="460"
+            height="460"
+            decoding="async"
+            loading="lazy"
+            alt="Ramkanta Pramanik, full stack developer at InfluxIQ Tech in Kalyani, West Bengal, India"
+          />
+          <figcaption class="portrait__cap">
+            <span class="mono-label">Fig. 00</span>
+            <span>{{ profile.name }} — {{ profile.role }}</span>
+          </figcaption>
+        </figure>
+
+        <div class="intro__text">
         <h2 class="section-title" v-reveal>
           I build the layer that has to be right.
         </h2>
@@ -23,6 +41,7 @@ import SheetHead from './SheetHead.vue'
             actually produces, because a principle you cannot point at in the repository is just a
             preference.
           </p>
+        </div>
         </div>
       </div>
 
@@ -66,11 +85,44 @@ import SheetHead from './SheetHead.vue'
 <style scoped>
 .intro {
   display: grid;
-  gap: 1.5rem;
+  gap: clamp(1.75rem, 4vw, 3rem);
   margin-bottom: clamp(3rem, 7vw, 5rem);
 }
 
+.intro__text { display: grid; gap: 1.5rem; align-content: start; }
+
 .intro__body { display: grid; gap: 1.1rem; }
+
+/* Portrait --------------------------------------------------- */
+.portrait {
+  margin: 0;
+  align-self: start;   /* do not stretch to the height of the text column */
+  max-width: 280px;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  /* Sits on warm paper, so take a little of the clinical blue out of it */
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.portrait__cap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  line-height: 1.35;
+}
 
 .principles {
   --spot: 0;
@@ -174,7 +226,12 @@ import SheetHead from './SheetHead.vue'
   .context { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (min-width: 1000px) {
-  .intro { grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); }
+@media (min-width: 760px) {
+  .intro { grid-template-columns: minmax(200px, 260px) 1fr; }
+}
+
+@media (min-width: 1100px) {
+  .intro { grid-template-columns: 260px 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
+  .intro__text { display: contents; }
 }
 </style>

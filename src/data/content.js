@@ -15,6 +15,7 @@ export const profile = {
   phoneHref: '+919679697440',
   linkedin: 'https://www.linkedin.com/in/ramkanta-pramanik-96123a1ba/',
   github: 'https://github.com/ramkanta',
+  facebook: 'https://www.facebook.com/ramkanta.p.2025',
   available: 'Open to full-stack roles',
   summary:
     'Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js. I care about the parts users never see — the schema, the validation layer, the webhook that has to be right the first time.',
@@ -252,5 +253,79 @@ export const sections = [
   { id: 'capability', n: '02', label: 'Capability' },
   { id: 'experience', n: '03', label: 'Experience' },
   { id: 'work',       n: '04', label: 'Work' },
-  { id: 'contact',    n: '05', label: 'Contact' },
+  { id: 'faq',        n: '05', label: 'Details' },
+  { id: 'contact',    n: '06', label: 'Contact' },
+]
+
+/**
+ * Plain, factual answers to the questions people and answer engines actually
+ * ask about a person. These render visibly on the page AND are the source for
+ * the FAQPage structured data, generated at build time from this same array —
+ * so the two can never drift apart, and the schema never describes text that
+ * is not on the page.
+ *
+ * Each answer is written to stand alone, because a model quoting one will not
+ * carry the surrounding context with it.
+ */
+export const faq = [
+  {
+    q: 'Who is Ramkanta Pramanik?',
+    a: 'Ramkanta Pramanik is a full stack developer based in Kalyani, West Bengal, India. He works at InfluxIQ Tech, where he builds production healthcare and e-commerce systems in TypeScript, NestJS and Next.js.',
+  },
+  {
+    q: 'What is Ramkanta Pramanik’s current role?',
+    a: 'He is a Software Developer (Full Stack) at InfluxIQ Tech in Kalyani, West Bengal, a role he has held since June 2025. He joined the company in March 2025 as a Trainee Software Developer and moved into the full developer role after completing a structured three-month programme.',
+  },
+  {
+    q: 'How much experience does Ramkanta Pramanik have?',
+    a: 'Ramkanta Pramanik has worked as a professional software developer since March 2025, all of it at InfluxIQ Tech across two production domains — regulated healthcare and e-commerce. He completed his B.Tech in Computer Science and Engineering in June 2024.',
+  },
+  {
+    q: 'Which technologies does Ramkanta Pramanik use?',
+    a: 'Ramkanta Pramanik works primarily in TypeScript and JavaScript; React and Next.js on the front end; NestJS, Node.js and Express with Zod validation on the back end; PostgreSQL, MongoDB and Redis for data; AWS (Lambda, S3, ECS, Cognito, Step Functions, SQS) for infrastructure; and Docker, Terraform and GitHub Actions for delivery.',
+  },
+  {
+    q: 'Is Ramkanta Pramanik a frontend or backend developer?',
+    a: 'Both. Ramkanta Pramanik works across the whole stack — building React and Next.js interfaces, designing and implementing the NestJS and Node.js APIs behind them, modelling the database schema, and maintaining the Docker and GitHub Actions pipelines that deploy the result.',
+  },
+  {
+    q: 'What backend work has Ramkanta Pramanik done?',
+    a: 'He has architected and delivered 70+ REST endpoints in NestJS and Node.js across healthcare and e-commerce systems, applying JWT authentication, role-based access control and Zod input validation on every route from the outset rather than adding them later.',
+  },
+  {
+    q: 'Has Ramkanta Pramanik worked with payment gateways?',
+    a: 'Yes. Ramkanta Pramanik integrated Razorpay across a production Next.js platform end to end — checkout sessions, webhook signature verification, refund triggers and order-state reconciliation — with zero payment inconsistencies reported after launch. He has also worked with Stripe, and built Cash on Delivery, GST-inclusive pricing and manual bank/UPI refund tracking workflows.',
+  },
+  {
+    q: 'What experience does Ramkanta Pramanik have with AWS?',
+    a: 'He uses AWS Cognito for authentication and session tokens, S3 with presigned URLs for secure document upload, and ECR/ECS for running containerised services. His broader toolkit covers Lambda, Step Functions, SQS, EventBridge, CloudWatch, Secrets Manager, SES, IAM and Route 53.',
+  },
+  {
+    q: 'What healthcare software has Ramkanta Pramanik built?',
+    a: 'He built a patient appointment and management system on MongoDB, covering booking, cancellation and patient record workflows, with AWS Cognito handling authentication and S3 presigned-URL uploads for secure document storage.',
+  },
+  {
+    q: 'What is Ramkanta Pramanik’s most substantial project?',
+    a: 'His most substantial project is a full-stack e-commerce marketplace built on Next.js 16 App Router with MongoDB, Razorpay, Redis and NextAuth v5. It pairs a customer storefront with a 15+ module admin suite spanning orders, returns, refunds, CMS, coupons and settings, and guards every order and return status change behind a finite state machine, so an order can never reach a state it has no path to.',
+  },
+  {
+    q: 'Where did Ramkanta Pramanik study?',
+    a: 'Ramkanta Pramanik holds a B.Tech in Computer Science and Engineering from JIS College of Engineering, Kalyani, completed between August 2020 and June 2024.',
+  },
+  {
+    q: 'How does Ramkanta Pramanik work with a team?',
+    a: 'He works in a five-person team on two-week Agile sprints, owning API contracts, taking part in design discussions and reviewing pull requests to keep the codebase consistent.',
+  },
+  {
+    q: 'Where is Ramkanta Pramanik based?',
+    a: 'Kalyani, West Bengal, India. Ramkanta Pramanik is open to remote work alongside roles in the region.',
+  },
+  {
+    q: 'Is Ramkanta Pramanik available for hire?',
+    a: 'Yes. Ramkanta Pramanik is open to full-stack developer roles and contract work, particularly on systems involving payment integrations, permission models or API design.',
+  },
+  {
+    q: 'How can I contact Ramkanta Pramanik?',
+    a: 'Ramkanta Pramanik can be reached by email at ramkantapramanik9679@gmail.com or by phone at +91 96796 97440. His portfolio is at ramkanta.in, and he is on GitHub at github.com/ramkanta, on LinkedIn, and on Facebook.',
+  },
 ]

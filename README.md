@@ -112,13 +112,35 @@ Scroll-reveal styles are gated on `html.js` (set by an inline script in
 `index.html`). Without that gate, a reader or crawler with no JavaScript would
 get a blank page, because nothing would ever add `is-visible`.
 
-Also in place: canonical URL, absolute Open Graph/Twitter tags with a real
-1200×630 PNG card (`public/og.png` — SVG cards do not render on any major
-platform), `robots.txt`, `sitemap.xml`, and a schema.org `@graph` describing the
-Person, WebSite and ProfilePage.
+### Structured data is generated, not hand-written
 
-If the domain ever changes, update the absolute URLs in `index.html`,
-`public/robots.txt` and `public/sitemap.xml`.
+`src/data/seo.js` builds the schema.org `@graph` (Person, WebSite, ProfilePage,
+FAQPage, CreativeWork) and `llms.txt` from `src/data/content.js`, and
+`scripts/prerender.js` injects them at build time. That is deliberate: Google
+requires FAQ structured data to match visible page text, and an answer engine
+quoting a stale schema is worse than one quoting nothing. Because both come from
+the same array, they cannot disagree — edit `faq` in `content.js` and the page,
+the schema and `llms.txt` all follow.
+
+FAQ answers are written to **stand alone**, repeating the full name rather than
+relying on pronouns, because a model quoting one will not carry the surrounding
+context with it.
+
+### The rest
+
+- Canonical URL, absolute Open Graph/Twitter tags, `rel="me"` identity links
+- `public/og.png` — a real 1200×630 PNG card with the portrait. SVG social cards
+  do not render on any major platform, so this must stay a raster image.
+- `public/ramkanta-pramanik.jpg` — the portrait, descriptive filename, rendered
+  on the page with alt text next to the biography that describes it
+- `robots.txt` explicitly allowing answer-engine crawlers (GPTBot, OAI-SearchBot,
+  ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, CCBot)
+- `sitemap.xml`
+- `docs/github-profile-README.md` — generated from the same content, to paste
+  into a `ramkanta/ramkanta` profile repo
+
+If the domain ever changes, update `SITE_URL` in `src/data/seo.js` and the
+absolute URLs in `index.html`, `public/robots.txt` and `public/sitemap.xml`.
 
 ## Deploy
 

@@ -7,6 +7,7 @@ const channels = [
   { key: 'Phone',    value: profile.phone,               href: `tel:${profile.phoneHref}` },
   { key: 'LinkedIn', value: 'ramkanta-pramanik',         href: profile.linkedin, external: true },
   { key: 'GitHub',   value: 'github.com/ramkanta',       href: profile.github,   external: true },
+  { key: 'Facebook', value: 'ramkanta.p.2025',            href: profile.facebook, external: true },
 ]
 
 const year = new Date().getFullYear()
@@ -15,7 +16,7 @@ const year = new Date().getFullYear()
 <template>
   <section id="contact" class="section section--contact">
     <div class="shell">
-      <SheetHead n="05" label="Contact" :count="profile.available" />
+      <SheetHead n="06" label="Contact" :count="profile.available" />
 
       <h2 class="cta-title" v-reveal>
         Have something that needs<br />
@@ -165,6 +166,6 @@ const year = new Date().getFullYear()
   .channels { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 980px) {
-  .channels { grid-template-columns: repeat(4, 1fr); }
+  .channels { grid-template-columns: repeat(5, 1fr); }
 }
 </style>

@@ -25,10 +25,12 @@ onMounted(() => {
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 })
 
+// No `immediate` — this must not touch `document` during setup, which also
+// runs on the server when the page is prerendered.
 watch(theme, (value) => {
   document.documentElement.dataset.theme = value
   localStorage.setItem('theme', value)
-}, { immediate: true })
+})
 
 const toggleTheme = () => {
   theme.value = theme.value === 'dark' ? 'light' : 'dark'

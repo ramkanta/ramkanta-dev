@@ -5,24 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <title>Ramkanta Pramanik — Full Stack Developer</title>
+    <title>Ramkanta Pramanik — Full Stack Developer (TypeScript, NestJS, Next.js)</title>
     <meta
       name="description"
-      content="Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js. 70+ REST endpoints, Razorpay payment integration, AWS infrastructure."
+      content="Ramkanta Pramanik is a full stack developer in Kalyani, West Bengal, building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js — 70+ REST endpoints, Razorpay payments and AWS infrastructure."
     />
+    <link rel="canonical" href="https://ramkanta.in/" />
     <meta name="author" content="Ramkanta Pramanik" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#100f0d" media="(prefers-color-scheme: dark)" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <!-- Open Graph. Absolute URLs and a real PNG: crawlers do not resolve
+         relative paths, and no major platform renders an SVG card. -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Ramkanta Pramanik" />
+    <meta property="og:url" content="https://ramkanta.in/" />
     <meta property="og:title" content="Ramkanta Pramanik — Full Stack Developer" />
     <meta
       property="og:description"
       content="Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js."
     />
-    <meta property="og:image" content="/og.svg" />
+    <meta property="og:image" content="https://ramkanta.in/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ramkanta Pramanik — Full Stack Developer" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="profile:first_name" content="Ramkanta" />
+    <meta property="profile:last_name" content="Pramanik" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ramkanta Pramanik — Full Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js."
+    />
+    <meta name="twitter:image" content="https://ramkanta.in/og.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,42 +50,77 @@
       rel="stylesheet"
     />
 
-    <!-- Apply the stored theme before first paint, so there is no flash. -->
     <script>
-      (function () {
-        try {
-          var stored = localStorage.getItem('theme')
-          var dark = stored
-            ? stored === 'dark'
-            : window.matchMedia('(prefers-color-scheme: dark)').matches
-          document.documentElement.dataset.theme = dark ? 'dark' : 'light'
-        } catch (e) {}
-      })()
+      // Marks that scripting is available, so the scroll-reveal styles may
+      // hide content. Without this class the prerendered page stays visible.
+      document.documentElement.classList.add('js')
+
+      // Apply the stored theme before first paint, so there is no flash.
+      try {
+        var stored = localStorage.getItem('theme')
+        var dark = stored
+          ? stored === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+      } catch (e) {}
     </script>
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Ramkanta Pramanik",
-        "jobTitle": "Full Stack Developer",
-        "email": "ramkantapramanik9679@gmail.com",
-        "telephone": "+919679697440",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Kalyani",
-          "addressRegion": "West Bengal",
-          "addressCountry": "IN"
-        },
-        "worksFor": { "@type": "Organization", "name": "InfluxIQ Tech" },
-        "alumniOf": { "@type": "CollegeOrUniversity", "name": "JIS College of Engineering" },
-        "sameAs": [
-          "https://www.linkedin.com/in/ramkanta-pramanik-96123a1ba/",
-          "https://github.com/ramkanta"
-        ],
-        "knowsAbout": [
-          "TypeScript", "React", "Next.js", "NestJS", "Node.js",
-          "AWS", "PostgreSQL", "MongoDB", "Docker", "Razorpay"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://ramkanta.in/#person",
+            "name": "Ramkanta Pramanik",
+            "givenName": "Ramkanta",
+            "familyName": "Pramanik",
+            "url": "https://ramkanta.in/",
+            "image": "https://ramkanta.in/og.png",
+            "jobTitle": "Full Stack Developer",
+            "description": "Full stack developer building production healthcare and e-commerce systems in TypeScript, NestJS and Next.js.",
+            "email": "mailto:ramkantapramanik9679@gmail.com",
+            "telephone": "+919679697440",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Kalyani",
+              "addressRegion": "West Bengal",
+              "addressCountry": "IN"
+            },
+            "worksFor": { "@type": "Organization", "name": "InfluxIQ Tech" },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "JIS College of Engineering"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/ramkanta-pramanik-96123a1ba/",
+              "https://github.com/ramkanta"
+            ],
+            "knowsAbout": [
+              "TypeScript", "JavaScript", "React", "Next.js", "NestJS", "Node.js",
+              "REST API design", "AWS", "PostgreSQL", "MongoDB", "Redis",
+              "Docker", "Terraform", "Razorpay", "Stripe"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ramkanta.in/#website",
+            "url": "https://ramkanta.in/",
+            "name": "Ramkanta Pramanik",
+            "description": "Portfolio of Ramkanta Pramanik, full stack developer.",
+            "publisher": { "@id": "https://ramkanta.in/#person" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://ramkanta.in/#webpage",
+            "url": "https://ramkanta.in/",
+            "name": "Ramkanta Pramanik — Full Stack Developer",
+            "isPartOf": { "@id": "https://ramkanta.in/#website" },
+            "about": { "@id": "https://ramkanta.in/#person" },
+            "primaryImageOfPage": "https://ramkanta.in/og.png",
+            "inLanguage": "en"
+          }
         ]
       }
     </script>

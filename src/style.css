@@ -256,7 +256,10 @@ p { text-wrap: pretty; }
 
 /* ---------- 5. Reveal animation --------------------------- */
 
-.reveal {
+/* Gated on `html.js`: without JavaScript nothing ever adds `is-visible`,
+   so ungated these rules would leave a crawler (or a no-JS reader) staring
+   at a blank page. */
+.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -271,7 +274,7 @@ p { text-wrap: pretty; }
 }
 
 /* Hairline that draws itself in */
-.reveal-rule {
+.js .reveal-rule {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.9s var(--ease);

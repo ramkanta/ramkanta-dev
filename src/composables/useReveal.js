@@ -41,6 +41,11 @@ export const vReveal = {
   unmounted(el) {
     el._revealObserver?.disconnect()
   },
+  /* Prerendered HTML carries the class already, so hydration does not flash
+     the content in and straight back out. */
+  getSSRProps() {
+    return { class: 'reveal' }
+  },
 }
 
 /**

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { profile, sections } from '../data/content'
 
 defineProps({
@@ -13,6 +13,12 @@ const emit = defineEmits(['toggle-theme'])
 const open = ref(false)
 const links = sections.filter((s) => s.id !== 'top')
 
+// The sheet below is teleported, and renderToString diverts teleported markup
+// into a separate buffer that never reaches the prerendered HTML — hydration
+// then cannot find its anchors. Rendering it only after mount avoids that
+// entirely, and costs nothing: the sheet is closed on first paint anyway.
+const mounted = ref(false)
+
 function close() {
   open.value = false
 }
@@ -25,7 +31,13 @@ watch(open, (isOpen) => {
 function onKeydown(e) {
   if (e.key === 'Escape') close()
 }
-window.addEventListener('keydown', onKeydown)
+
+// Bound on mount rather than in setup, so prerendering never touches `window`.
+onMounted(() => {
+  mounted.value = true
+  window.addEventListener('keydown', onKeydown)
+})
+
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKeydown)
   document.body.style.overflow = ''
@@ -106,7 +118,7 @@ onBeforeUnmount(() => {
          Teleported to <body> because .site-nav uses backdrop-filter, which
          makes it the containing block for position:fixed descendants — the
          sheet would otherwise collapse to the height of the header. -->
-    <Teleport to="body">
+    <Teleport v-if="mounted" to="body">
     <Transition name="sheet">
       <div v-if="open" id="mobile-sheet" class="sheet">
         <nav class="sheet__links" aria-label="Sections">

@@ -90,6 +90,36 @@ Type: **Archivo** (display/body), **JetBrains Mono** (labels), loaded from Googl
 Verified with no horizontal overflow from 320px upward; the state diagram scrolls inside
 its own container rather than widening the page.
 
+## SEO
+
+`npm run build` runs three steps: the client build, an SSR build, then
+`scripts/prerender.js`, which renders the app with `@vue/server-renderer` and
+injects the markup into `dist/index.html`. The shipped HTML therefore contains
+~1,200 words of real content rather than an empty `<div id="app">`.
+
+Two constraints follow from that, and both will silently break prerendering if
+ignored:
+
+- **Nothing may touch `window`, `document` or `localStorage` during `setup()`** —
+  only inside `onMounted` (or guarded). A `watch(..., { immediate: true })` that
+  touches the DOM counts as setup.
+- **`<Teleport>` must not render on the server.** `renderToString` diverts
+  teleported markup into a separate buffer that never reaches the HTML, so
+  hydration cannot find its anchors and tears the DOM down to a comment node.
+  `SiteNav` gates its teleport behind a `mounted` ref for exactly this reason.
+
+Scroll-reveal styles are gated on `html.js` (set by an inline script in
+`index.html`). Without that gate, a reader or crawler with no JavaScript would
+get a blank page, because nothing would ever add `is-visible`.
+
+Also in place: canonical URL, absolute Open Graph/Twitter tags with a real
+1200×630 PNG card (`public/og.png` — SVG cards do not render on any major
+platform), `robots.txt`, `sitemap.xml`, and a schema.org `@graph` describing the
+Person, WebSite and ProfilePage.
+
+If the domain ever changes, update the absolute URLs in `index.html`,
+`public/robots.txt` and `public/sitemap.xml`.
+
 ## Deploy
 
 Any static host. On Vercel: framework preset **Vite**, build `npm run build`,
